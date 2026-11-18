@@ -1,0 +1,16 @@
+{
+  "published_services": 40,
+  "published_pages_exported": 10,
+  "nonempty_content_pages": 5,
+  "populated_categories": 6,
+  "populated_tags": 40,
+  "assets_to_download": 47,
+  "shortlink_redirects": 8,
+  "skipped_empty_dynamic_pages": [
+    "/rejting-hostingov/",
+    "/top-service-podbor-hashtag/",
+    "/service-upravleniya-komandoy/"
+  ],
+  "trash_excluded": 108,
+  "sitemap_count": 92
+}
