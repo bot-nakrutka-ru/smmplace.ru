@@ -1,4 +1,4 @@
-/* Standalone SMMplace: no WordPress/PHP, no external libraries. */
+/* SMMplace: site navigation, filters and form feedback. */
 (() => {
   'use strict';
   const root = document;
@@ -15,6 +15,13 @@
       if (!dd.contains(ev.target)) dd.removeAttribute('open');
     }
   });
+  // Replace obsolete platform-related text in existing HTML templates.
+  root.querySelectorAll('.form-notice').forEach(notice => {
+    const isReview = Boolean(notice.closest('[data-local-review]'));
+    notice.textContent = isReview
+      ? 'Спасибо за отзыв!'
+      : 'Спасибо! Ваше предложение принято.';
+  });
   const dialog = root.querySelector('#add-service-modal');
   root.querySelectorAll('[data-open-modal]').forEach(button => button.addEventListener('click', () => {
     if (dialog && typeof dialog.showModal === 'function') dialog.showModal();
@@ -25,7 +32,10 @@
     dialog.querySelector('form')?.addEventListener('submit', event => {
       event.preventDefault();
       const notice = dialog.querySelector('.form-notice');
-      if (notice) notice.hidden = false;
+      if (notice) {
+        notice.textContent = 'Спасибо! Ваше предложение принято.';
+        notice.hidden = false;
+      }
     });
   }
   root.querySelectorAll('[data-tabs]').forEach(tabs => {
@@ -56,7 +66,10 @@
     form.addEventListener('submit', event => {
       event.preventDefault();
       const notice = form.querySelector('.form-notice');
-      if (notice) notice.hidden = false;
+      if (notice) {
+        notice.textContent = 'Спасибо за отзыв!';
+        notice.hidden = false;
+      }
     });
   });
   root.querySelectorAll('[data-catalog]').forEach(catalog => {
